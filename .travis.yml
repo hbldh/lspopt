@@ -1,0 +1,17 @@
+language: python
+sudo: true
+python:
+  - 2.6
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+branches:
+  only:
+    - master
+    - develop
+install:
+  - "sudo apt-get install libblas-dev liblapack-dev libatlas-dev gfortran build-essential"
+  - "pip install coverage"
+  - "travis_wait pip install -r requirements.txt"
+script: nosetests tests --with-coverage --cover-package=lspopt
