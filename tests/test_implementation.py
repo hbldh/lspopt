@@ -22,8 +22,9 @@ from __future__ import absolute_import
 import six
 import numpy as np
 from numpy.testing import assert_allclose
+from scipy.signal import chirp, spectrogram
 
-from lspopt import lspopt
+from lspopt import lspopt, spectrogram_lspopt
 from .lspopt_ref import lspopt_ref
 
 
@@ -50,3 +51,17 @@ class TestLSPOptSuite(object):
 
         for c in np.arange(1.1, 30.0, 0.1):
             yield test_fcn, c
+
+    def test_spectrogram_method(self):
+
+        fs = 10e3
+        N = 1e5
+        amp = 2 * np.sqrt(2)
+        noise_power = 0.001 * fs / 2
+        time = np.arange(N) / fs
+        freq = np.linspace(1e3, 2e3, N)
+        x = amp * chirp(time, 1e3, 2.0, 6e3, method='quadratic') + \
+            np.random.normal(scale=np.sqrt(noise_power), size=time.shape)
+
+        f, t, Sxx = spectrogram_lspopt(x, fs, c_parameter=20.0)
+        f_sp, t_sp, Sxx_sp = spectrogram(x, fs)
