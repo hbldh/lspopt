@@ -87,6 +87,7 @@ plt.show()
 ```
 
 ![Spectrogram plot](https://hbldh.github.com/lspopt/images/plot.png)
+*Top: Using SciPy's spectrogram method. Bottom: Using LSPOpt's spectrogram solution.*
 
 ## References
 
