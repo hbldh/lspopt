@@ -36,8 +36,9 @@ setup(
     platforms=lspopt.__platforms__,
     keywords=lspopt.__keywords__,
     classifiers=lspopt.__classifiers__,
-    packages=find_packages(),
+    packages=find_packages(exclude=('tests', )),
     package_data={
+        'lspopt.data': ['*.npy']
     },
     install_requires=[
         'numpy>=1.6.2',
