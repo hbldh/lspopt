@@ -57,25 +57,53 @@ def generate_lsp_processes_covariance_matrix_levelcurves():
     t_vector = np.arange(-(N/2), N/2, 1) / Fs
     X, Y = np.meshgrid(t_vector, t_vector)
 
-    _, _, Rx_1 = utils.create_lsp_realisation(N, 1.1, Fs)
-    _, _, Rx_2 = utils.create_lsp_realisation(N, 3.0, Fs)
-    _, _, Rx_3 = utils.create_lscp_realisation(N, 1.1, Fs, 2.0, -2.0)
-    _, _, Rx_4 = utils.create_mlsp_realisation(N, (1.1, 20.0), Fs)
+    random_seed = 1
 
-    Rxs = [Rx_1, Rx_2, Rx_3, Rx_4]
+    x_1, _, Rx_1 = utils.create_lsp_realisation(N, 1.1, Fs, random_seed)
+    x_2, _, Rx_2 = utils.create_lsp_realisation(N, 3.0, Fs, random_seed)
+    x_3, _, Rx_3 = utils.create_lscp_realisation(N, 1.1, Fs, 2.0, -2.0, random_seed)
+    x_4, _, Rx_4 = utils.create_mlsp_realisation(N, (1.1, 20.0), Fs, random_seed)
+
+    Rxs = [
+        ('R_x^{LSP}, c=1.1', Rx_1),
+        ('R_x^{LSP}, c=3', Rx_2),
+        ('R_x^{LSCP}, c=1.1, m=2, d=-2', Rx_3),
+        ('R_x^{MLSP}, c_1=1.1, c_2=20', Rx_4)
+    ]
 
     for k in six.moves.range(1, 5):
         ax = plt.subplot(2, 2, k)
-        ax.contour(X, Y, np.real(Rxs[k - 1]))
+        ax.contour(X, Y, np.real(Rxs[k - 1][1]))
         ax.axis('square')
+        ax.set_title(Rxs[k - 1][0])
         ax.set_xlim([-5.0, 5.0])
         ax.set_ylim([-5.0, 5.0])
+        ax.set_xlabel('t')
+        ax.set_xlabel('s')
+
+    plt.show()
+
+    xs = [
+        ('x^{LSP}, c=1.1', x_1),
+        ('x^{LSP}, c=3', x_2),
+        ('x^{LSCP}, c=1.1, m=2, d=-2', x_3),
+        ('x^{MLSP}, c_1=1.1, c_2=20', x_4)
+    ]
+
+    for k in six.moves.range(1, 5):
+        ax = plt.subplot(2, 2, k)
+        ax.plot(t_vector, np.real(xs[k - 1][1]))
+        #ax.set_title(xs[k - 1][0])
+        ax.set_xlim([-10.0, 10.0])
+        ax.set_ylim([-1.5, 1.5])
+        ax.set_xlabel('t')
+        ax.set_ylabel('Realisation of {0}'.format(xs[k-1][0]))
 
     plt.show()
 
 
 def main():
-    generate_chirp_spectrogram_plot()
+    #generate_chirp_spectrogram_plot()
     generate_lsp_processes_covariance_matrix_levelcurves()
 
 if __name__ == "__main__":
