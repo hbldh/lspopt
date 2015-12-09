@@ -29,6 +29,9 @@ Test with `nosetests`:
 
     nosetests tests/ 
 
+Tests are run at every commit to GitHub and the results of this, as well as test 
+coverage, can be studied at [Travis CI](https://travis-ci.org/hbldh/lspopt).
+
 ## Usage
 
 To generate the taper windows only, use the `lspopt` method:

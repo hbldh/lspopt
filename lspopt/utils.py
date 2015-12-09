@@ -6,7 +6,7 @@
 
 .. module:: utils
     :platform: Unix, Windows
-    :synopsis: 
+    :synopsis:
 
 .. moduleauthor:: hbldh <henrik.blidh@nedomkull.com>
 
@@ -20,9 +20,10 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 
 import numpy as np
+from scipy.linalg import sqrtm
 
 
-def create_lsp_realisation(N, c, random_seed=None):
+def create_lsp_realisation(N, c, Fs, random_seed=None):
     """Create a realisation of a locally stationary process (LSP).
 
     For details, see section 2 in [1].
@@ -30,16 +31,22 @@ def create_lsp_realisation(N, c, random_seed=None):
     Parameters
     ----------
     N : int
-        Length of the process to generate
+        Length of the process to generate.
     c: float
         Measure of stationarity of the process to generate.
+    Fs: float
+        Frequency.
     random_seed: int
         Random seed to apply before generating process.
 
     Returns
     -------
-    p : ndarray
-        The process realisation
+    x : ndarray
+        The process realisation.
+    H : ndarray
+        The process-generating matrix H.
+    Rx : ndarray
+        The covariance matrix R_x(t, s).
 
     References
     ----------
@@ -48,10 +55,11 @@ def create_lsp_realisation(N, c, random_seed=None):
            EURASIP Journal on Advances in Signal Processing, 2011, 10.
 
     """
-    raise NotImplementedError()
+    r_x = lambda a, b: _q((a + b) / 2) * _r(a - b, c)
+    return _create_realisation(r_x, N, Fs, random_seed)
 
 
-def create_lscp_realisation(N, c, random_seed=None):
+def create_lscp_realisation(N, c, Fs, m, d, random_seed=None):
     """Create a realisation of a locally stationary chirp process.
 
     For details, see section 2 in [1].
@@ -62,13 +70,21 @@ def create_lscp_realisation(N, c, random_seed=None):
         Length of the process to generate
     c: float
         Measure of stationarity of the process to generate.
+    m: float
+        Chirp frequency.
+    d: float
+        Start of the chirp frequency.
     random_seed: int
         Random seed to apply before generating process.
 
     Returns
     -------
-    p : ndarray
-        The process realisation
+    x : ndarray
+        The process realisation.
+    H : ndarray
+        The process-generating matrix H.
+    Rx : ndarray
+        The covariance matrix R_x(t, s).
 
     References
     ----------
@@ -77,10 +93,11 @@ def create_lscp_realisation(N, c, random_seed=None):
            EURASIP Journal on Advances in Signal Processing, 2011, 10.
 
     """
-    raise NotImplementedError()
+    r_x = lambda a, b: _q((a + b) / 2) * _r(a - b, c) * np.exp(1j * m * (a - b) * ((a + b) / 2 - d))
+    return _create_realisation(r_x, N, Fs, random_seed)
 
 
-def create_mlsp_realisation(N, c, random_seed=None):
+def create_mlsp_realisation(N, c_vector, Fs, random_seed=None):
     """Create a realisation of a Multicomponent locally stationary process.
 
     For details, see section 2 in [1].
@@ -89,15 +106,21 @@ def create_mlsp_realisation(N, c, random_seed=None):
     ----------
     N : int
         Length of the process to generate
-    c: float
-        Measure of stationarity of the process to generate.
+    c_vector: list, tuple
+        A list of stationarity measure values of the process to generate.
+    Fs: float
+        Frequency.
     random_seed: int
         Random seed to apply before generating process.
 
     Returns
     -------
-    p : ndarray
-        The process realisation
+    x : ndarray
+        The process realisation.
+    H : ndarray
+        The process-generating matrix H.
+    Rx : ndarray
+        The covariance matrix R_x(t, s).
 
     References
     ----------
@@ -106,4 +129,38 @@ def create_mlsp_realisation(N, c, random_seed=None):
            EURASIP Journal on Advances in Signal Processing, 2011, 10.
 
     """
-    raise NotImplementedError()
+    r_x = lambda a, b: np.sum([_q((a + b) / 2) * _r(a - b, c) for c in c_vector])
+    return _create_realisation(r_x, N, Fs, random_seed)
+
+
+def _create_realisation(r_x, N, Fs, random_seed):
+    # Sampling vector.
+    t_vector = np.arange(-(N/2), N/2, 1) / Fs
+
+    # Create real or complex matrix depending on covariance function output.
+    if np.iscomplex(r_x(t_vector[0], t_vector[-1])):
+        Rx = np.zeros((N, N), 'complex')
+    else:
+        Rx = np.zeros((N, N), 'float')
+
+    # Calculate covariance matrix.
+    for i, t in enumerate(t_vector):
+        for j, s in enumerate(t_vector):
+            Rx[i, j] = r_x(t, s)
+    # Apply matrix square root to Rx to find H from (5) in [1].
+    H = sqrtm(Rx)
+
+    # Generate Gaussian zero mean stochastic process.
+    np.random.seed(random_seed)
+    x = np.random.normal(size=(N,))
+
+    # Create process realisation and return all relevant data.
+    return H.dot(x), H, Rx
+
+
+def _q(tau):
+    return np.exp(-(tau ** 2)/2)
+
+
+def _r(tau, c):
+    return np.exp(-((c/4) * (tau ** 2)) / 2)
