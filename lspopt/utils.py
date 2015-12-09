@@ -70,6 +70,8 @@ def create_lscp_realisation(N, c, Fs, m, d, random_seed=None):
         Length of the process to generate
     c: float
         Measure of stationarity of the process to generate.
+    Fs: float
+        Frequency.
     m: float
         Chirp frequency.
     d: float

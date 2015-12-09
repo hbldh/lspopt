@@ -17,6 +17,8 @@ from __future__ import absolute_import
 import six
 import numpy as np
 from scipy.signal import chirp, spectrogram
+import matplotlib
+matplotlib.rcParams['text.usetex'] = True
 import matplotlib.pyplot as plt
 
 from lspopt.lsp import spectrogram_lspopt
@@ -50,8 +52,8 @@ def generate_chirp_spectrogram_plot():
     plt.show()
 
 
-def generate_lsp_processes_covariance_matrix_levelcurves():
-
+def generate_lsp_processes_figures():
+    """Generates Figure 1 and Figure 2 from the paper."""
     N = 256
     Fs = 7.0
     t_vector = np.arange(-(N/2), N/2, 1) / Fs
@@ -65,10 +67,10 @@ def generate_lsp_processes_covariance_matrix_levelcurves():
     x_4, _, Rx_4 = utils.create_mlsp_realisation(N, (1.1, 20.0), Fs, random_seed)
 
     Rxs = [
-        ('R_x^{LSP}, c=1.1', Rx_1),
-        ('R_x^{LSP}, c=3', Rx_2),
-        ('R_x^{LSCP}, c=1.1, m=2, d=-2', Rx_3),
-        ('R_x^{MLSP}, c_1=1.1, c_2=20', Rx_4)
+        ('$R_x^{LSP}, c=1.1$', Rx_1),
+        ('$R_x^{LSP}, c=3$', Rx_2),
+        ('$R_x^{LSCP}, c=1.1, m=2, d=-2$', Rx_3),
+        ('$R_x^{MLSP}, c_1=1.1, c_2=20$', Rx_4)
     ]
 
     for k in six.moves.range(1, 5):
@@ -79,32 +81,31 @@ def generate_lsp_processes_covariance_matrix_levelcurves():
         ax.set_xlim([-5.0, 5.0])
         ax.set_ylim([-5.0, 5.0])
         ax.set_xlabel('t')
-        ax.set_xlabel('s')
+        ax.set_ylabel('s')
 
     plt.show()
 
     xs = [
-        ('x^{LSP}, c=1.1', x_1),
-        ('x^{LSP}, c=3', x_2),
-        ('x^{LSCP}, c=1.1, m=2, d=-2', x_3),
-        ('x^{MLSP}, c_1=1.1, c_2=20', x_4)
+        ('$x^{LSP}, c=1.1$', x_1),
+        ('$x^{LSP}, c=3$', x_2),
+        ('$x^{LSCP}, c=1.1, m=2, d=-2$', x_3),
+        ('$x^{MLSP}, c_1=1.1, c_2=20$', x_4)
     ]
 
     for k in six.moves.range(1, 5):
         ax = plt.subplot(2, 2, k)
         ax.plot(t_vector, np.real(xs[k - 1][1]))
-        #ax.set_title(xs[k - 1][0])
+        ax.set_title(xs[k - 1][0])
         ax.set_xlim([-10.0, 10.0])
         ax.set_ylim([-1.5, 1.5])
         ax.set_xlabel('t')
-        ax.set_ylabel('Realisation of {0}'.format(xs[k-1][0]))
 
     plt.show()
 
 
 def main():
     #generate_chirp_spectrogram_plot()
-    generate_lsp_processes_covariance_matrix_levelcurves()
+    generate_lsp_processes_figures()
 
 if __name__ == "__main__":
     main()
