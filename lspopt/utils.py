@@ -151,13 +151,14 @@ def _create_realisation(r_x, N, Fs, random_seed):
             Rx[i, j] = r_x(t, s)
             Rx[j, i] = Rx[i, j]
     # Apply matrix square root to Rx to find H from (5) in [1].
+    # Since Rx is symmetric, its square root will also be symmetric.
     H = sqrtm(Rx)
 
     # Use only the real part of the matrix if the imaginary side is small.
     # The covariance matrix is symmetric and positive semi-definite and
     # as such it will have a principal square root, i.e. a strictly real
     # square root matrix.
-    if np.linalg.norm(np.imag(H)) < 1e-6:
+    if (np.linalg.norm(np.imag(H)) / np.linalg.norm(H)) < 1e-6:
         H = np.real(H)
 
     # Generate Gaussian zero mean stochastic process.
