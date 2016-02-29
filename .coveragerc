@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = lspopt
+include = */lspopt/*
+omit =
+    */setup.py
