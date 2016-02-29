@@ -1,6 +1,7 @@
 # LSPOpt
 
 [![Build Status](https://travis-ci.org/hbldh/lspopt.svg)](https://travis-ci.org/hbldh/lspopt)
+[![Coverage Status](https://coveralls.io/repos/github/hbldh/lspopt/badge.svg?branch=master)](https://coveralls.io/github/hbldh/lspopt?branch=master)
 
 This module is a Python implementation of the multitaper window method 
 described in [\[1\]](#references) for estimating Wigner spectra for certain locally
