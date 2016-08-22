@@ -4,3 +4,9 @@ source = lspopt
 include = */lspopt/*
 omit =
     */setup.py
+
+[report]
+exclude_lines =
+    except ImportError:
+    if _version_extra:
+    
