@@ -19,12 +19,12 @@ except ImportError:
 # Version information.  An empty _version_extra corresponds to a full
 # release.  'dev' as a _version_extra string means this is a development
 # version.
-_version_major = 0
-_version_minor = 2
+_version_major = 1
+_version_minor = 0
 _version_patch = 0
 # _version_extra = 'dev1'
-_version_extra = 'a6'
-# _version_extra = ''  # Uncomment this for full releases
+# _version_extra = 'a6'
+_version_extra = ''  # Uncomment this for full releases
 
 # Construct full version string from these.
 _ver = [_version_major, _version_minor, _version_patch]
@@ -49,7 +49,7 @@ __download_url__ = 'https://github.com/hbldh/lspopt/tarball/' + '.'.join(map(str
 __platforms__ = ['Linux', 'Mac OSX', 'Windows XP/Vista/7/8']
 __keywords__ = ['Mathmatical Statistics', 'Multitaper', 'Spectrogram']
 __classifiers__ = [
-                  'Development Status :: 4 - Beta',
+                  'Development Status :: 5 - Production/Stable',
                   'Intended Audience :: Science/Research',
                   'Intended Audience :: Developers',
                   'License :: MIT',
