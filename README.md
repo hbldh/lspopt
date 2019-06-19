@@ -22,16 +22,16 @@ Abstract from [\[1\]](#references):
 
 Install via pip:
 
-    pip install git+https://github.com/hbldh/lspopt.git#egg=lspopt
+    pip install lspopt
 
 ## Testing
 
-Test with `nosetests`:
+Test with `pytest`:
 
-    nosetests tests/ 
+    pytest tests/ 
 
 Tests are run at every commit to GitHub and the results of this, as well as test 
-coverage, can be studied at [Travis CI](https://travis-ci.org/hbldh/lspopt).
+coverage, can be studied at [Azure Pipelines](https://dev.azure.com/hbldh/github/_build/latest?definitionId=7&branchName=master).
 
 ## Usage
 
