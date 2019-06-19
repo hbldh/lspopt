@@ -53,7 +53,7 @@ jobs:
     python.version: '3.6'
     python.architecture: 'x64'
   pool:
-    vmImage: 'Ubuntu 16.04'z
+    vmImage: 'Ubuntu 16.04'
 
   steps:
   - task: UsePythonVersion@0

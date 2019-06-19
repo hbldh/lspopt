@@ -1,6 +1,6 @@
 # LSPOpt
 
-[![Build Status](https://travis-ci.org/hbldh/lspopt.svg)](https://travis-ci.org/hbldh/lspopt)
+[![Build Status](https://dev.azure.com/hbldh/github/_apis/build/status/hbldh.lspopt?branchName=master)](https://dev.azure.com/hbldh/github/_build/latest?definitionId=7&branchName=master)
 [![Coverage Status](https://coveralls.io/repos/github/hbldh/lspopt/badge.svg?branch=master)](https://coveralls.io/github/hbldh/lspopt?branch=master)
 
 This module is a Python implementation of the multitaper window method 
