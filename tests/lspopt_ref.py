@@ -71,7 +71,7 @@ def lspopt_ref(n, c_parameter=20.0):
         if K > 2:
             for i in range(1, K - 1):
                 h = np.vstack((h, (2 * t1 * h.T[:, i]) - 2 * i * h.T[:, i - 1]))
-    H = h.T * np.outer(np.exp(-(t1**2)/2), np.ones((K,), 'float'))
+    H = h.T * np.outer(np.exp(-(t1 ** 2) / 2), np.ones((K,), "float"))
 
     for i in six.moves.range(K):
         H[:, i] = H[:, i] / np.sqrt(H[:, i].T.dot(H[:, i]))  # Norm

@@ -19,15 +19,12 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import absolute_import
 
-import unittest
-
 import pytest
 import six
 import numpy as np
 from numpy.testing import assert_allclose
 
 from lspopt import utils
-
 
 
 def test_create_lsp_realisation():
@@ -56,7 +53,7 @@ def test_create_lscp_realisation():
 
 def test_create_mlsp_realisation():
     """Test that create method is working at least."""
-    N = 256 
+    N = 256
     c = [1.4, 20.0]
     Fs = 8.0
     x, H, Rx = utils.create_mlsp_realisation(N, c, Fs)

@@ -63,16 +63,24 @@ def lspopt(n, c_parameter=20.0):
     for i in six.moves.range(1, K - 1):
         h = np.vstack((h, (2 * t1 * h.T[:, i]) - 2 * i * h.T[:, i - 1]))
 
-    H = h.T * np.outer(np.exp(-(t1**2)/2), np.ones((K,), 'float'))
+    H = h.T * np.outer(np.exp(-(t1 ** 2) / 2), np.ones((K,), "float"))
     H /= np.array([np.linalg.norm(x) for x in H.T])
 
     return H.T.copy(), weights
 
 
-def spectrogram_lspopt(x, fs=1.0, c_parameter=20.0,
-                       nperseg=256, noverlap=None, nfft=None,
-                       detrend='constant', return_onesided=True,
-                       scaling='density', axis=-1):
+def spectrogram_lspopt(
+    x,
+    fs=1.0,
+    c_parameter=20.0,
+    nperseg=256,
+    noverlap=None,
+    nfft=None,
+    detrend="constant",
+    return_onesided=True,
+    scaling="density",
+    axis=-1,
+):
     """Convenience method for calling :py:meth:`scipy.signal.spectrogram` with
     :py:mod:`lspopt` multitaper windows.
 
@@ -144,15 +152,20 @@ def spectrogram_lspopt(x, fs=1.0, c_parameter=20.0,
     S_out = None
     # Call spectrogram method for each taper window.
     for taper_window, taper_weight in zip(H, taper_weights):
-        f, t, Pxx = spectrogram(x, fs=fs, window=taper_window,
-                                nperseg=nperseg, noverlap=noverlap,
-                                nfft=nfft, detrend=detrend,
-                                return_onesided=return_onesided,
-                                scaling=scaling, axis=axis)
+        f, t, Pxx = spectrogram(
+            x,
+            fs=fs,
+            window=taper_window,
+            nperseg=nperseg,
+            noverlap=noverlap,
+            nfft=nfft,
+            detrend=detrend,
+            return_onesided=return_onesided,
+            scaling=scaling,
+            axis=axis,
+        )
         if S_out is None:
             S_out = taper_weight * Pxx
         else:
             S_out += taper_weight * Pxx
     return f, t, S_out
-
-

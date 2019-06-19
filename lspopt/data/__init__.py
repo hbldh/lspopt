@@ -17,13 +17,13 @@ from pkg_resources import resource_filename
 
 import numpy as np
 
-__all__ = ['C', 'WEIGHTS', 'f_h']
+__all__ = ["C", "WEIGHTS", "f_h"]
 
 # An array of C parameter values for which weights have been pre-calculated.
-C = np.load(resource_filename('lspopt.data', 'c.npy')).flatten()
+C = np.load(resource_filename("lspopt.data", "c.npy")).flatten()
 # The pre-calculated Hermite polynomial coefficients
 # for the C parameter values above.
-WEIGHTS = np.load(resource_filename('lspopt.data', 'weights.npy'))
+WEIGHTS = np.load(resource_filename("lspopt.data", "weights.npy"))
 
 
 def f_h(n, k):
@@ -39,6 +39,7 @@ def f_h(n, k):
     """
     return n / _K_TO_VALUE_.get(k)
 
+
 # Given length of Hermite polynomial coefficient array, return
 # a value to divide N with.
 _K_TO_VALUE_ = {
@@ -51,5 +52,5 @@ _K_TO_VALUE_ = {
     7: 9.8,
     8: 10.3,
     9: 10.9,
-    10: 11.2
+    10: 11.2,
 }

@@ -93,7 +93,11 @@ def create_lscp_realisation(N, c, Fs, m, d, random_seed=None):
            EURASIP Journal on Advances in Signal Processing, 2011, 10.
 
     """
-    r_x = lambda a, b: _q((a + b) / 2) * _r(a - b, c) * np.exp(1j * m * (a - b) * ((a + b) / 2 - d))
+    r_x = (
+        lambda a, b: _q((a + b) / 2)
+        * _r(a - b, c)
+        * np.exp(1j * m * (a - b) * ((a + b) / 2 - d))
+    )
     return _create_realisation(r_x, N, Fs, random_seed)
 
 
@@ -135,13 +139,13 @@ def create_mlsp_realisation(N, c_vector, Fs, random_seed=None):
 
 def _create_realisation(r_x, N, Fs, random_seed):
     # Sampling vector.
-    t_vector = np.arange(-(N/2), N/2, 1) / Fs
+    t_vector = np.arange(-(N / 2), N / 2, 1) / Fs
 
     # Create real or complex matrix depending on covariance function output.
     if np.iscomplex(r_x(t_vector[0], t_vector[-1])):
-        Rx = np.zeros((N, N), 'complex')
+        Rx = np.zeros((N, N), "complex")
     else:
-        Rx = np.zeros((N, N), 'float')
+        Rx = np.zeros((N, N), "float")
 
     # Calculate covariance matrix.
     for i, t in enumerate(t_vector):
@@ -170,8 +174,8 @@ def _create_realisation(r_x, N, Fs, random_seed):
 
 
 def _q(tau):
-    return np.exp(-(tau ** 2)/2)
+    return np.exp(-(tau ** 2) / 2)
 
 
 def _r(tau, c):
-    return np.exp(-((c/4) * (tau ** 2)) / 2)
+    return np.exp(-((c / 4) * (tau ** 2)) / 2)
