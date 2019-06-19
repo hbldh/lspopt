@@ -2,6 +2,8 @@
 
 [![Build Status](https://dev.azure.com/hbldh/github/_apis/build/status/hbldh.lspopt?branchName=master)](https://dev.azure.com/hbldh/github/_build/latest?definitionId=7&branchName=master)
 [![Coverage Status](https://coveralls.io/repos/github/hbldh/lspopt/badge.svg?branch=master)](https://coveralls.io/github/hbldh/lspopt?branch=master)
+[![PyPI version](https://img.shields.io/pypi/v/lspopt.svg)](https://pypi.org/project/lspopt/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 This module is a Python implementation of the multitaper window method 
 described in [\[1\]](#references) for estimating Wigner spectra for certain locally

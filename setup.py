@@ -105,7 +105,7 @@ setup(
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Science/Research',
         'Intended Audience :: Developers',
-        'License :: MIT',
+        'License :: OSI Approved :: MIT License',
         'Topic :: Scientific/Engineering',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX',
