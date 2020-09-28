@@ -1,6 +1,6 @@
 # LSPOpt
 
-[![Build Status](https://dev.azure.com/hbldh/github/_apis/build/status/hbldh.lspopt?branchName=master)](https://dev.azure.com/hbldh/github/_build/latest?definitionId=7&branchName=master)
+![Build and Test](https://github.com/hbldh/lspopt/workflows/Build%20and%20Test/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/hbldh/lspopt/badge.svg?branch=master)](https://coveralls.io/github/hbldh/lspopt?branch=master)
 [![PyPI version](https://img.shields.io/pypi/v/lspopt.svg)](https://pypi.org/project/lspopt/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)

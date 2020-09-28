@@ -36,6 +36,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
+with io.open(os.path.join(here, 'CHANGELOG.md'), encoding='utf-8') as f:
+    long_description = long_description + '\n' + f.read()
+
 # Load the package's __version__.py module as a dictionary.
 about = {}
 if not VERSION:
