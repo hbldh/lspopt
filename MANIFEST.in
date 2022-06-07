@@ -1,1 +1,1 @@
-include LICENSE README.md HISTORY.md requirements.txt Pipfile
+include LICENSE README.md HISTORY.md requirements.txt Pipfile CHANGELOG.md
