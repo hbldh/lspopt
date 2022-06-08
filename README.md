@@ -26,6 +26,8 @@ Install via pip:
 
     pip install lspopt
 
+If you prefer to use `conda`, see [instructions in this repo](https://github.com/conda-forge/lspopt-feedstock).
+
 ## Testing
 
 Test with `pytest`:
