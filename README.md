@@ -93,7 +93,8 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Spectrogram plot](https://github.com/hbldh/lspopt/blob/master/plot.png)
+![Spectrogram plot](https://github.com/hbldh/lspopt/blob/master/plot.png "Top: Using SciPy's spectrogram method. Bottom: Using LSPOpt's spectrogram solution.")
+
 *Top: Using SciPy's spectrogram method. Bottom: Using LSPOpt's spectrogram solution.*
 
 ## References
