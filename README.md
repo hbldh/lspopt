@@ -103,4 +103,4 @@ plt.show()
 
 \[1\] [Hansson-Sandsten, M. (2011). Optimal multitaper Wigner spectrum 
 estimation of a class of locally stationary processes using Hermite functions. 
-EURASIP Journal on Advances in Signal Processing, 2011, 10.](http://asp.eurasipjournals.com/content/pdf/1687-6180-2011-980805.pdf)
+EURASIP Journal on Advances in Signal Processing, 2011, 10.](https://dx.doi.org/10.1155/2011/980805)
