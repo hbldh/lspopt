@@ -51,13 +51,13 @@ def test_different_c(c):
 
 def test_spectrogram_method():
     """Test the spectrogram method's functionality."""
-    fs = 10e3
-    N = int(1e5)
+    fs = 10000
+    N = 100000
     amp = 2 * np.sqrt(2)
     noise_power = 0.001 * fs / 2
     time = np.arange(N) / fs
-    freq = np.linspace(1e3, 2e3, N)
-    x = amp * chirp(time, 1e3, 2.0, 6e3, method="quadratic") + np.random.normal(
+    freq = np.linspace(1000, 2000, N)
+    x = amp * chirp(time, 1000, 2.0, 6000, method="quadratic") + np.random.normal(
         scale=np.sqrt(noise_power), size=time.shape
     )
 

@@ -26,13 +26,13 @@ import lspopt.utils as utils
 
 
 def generate_chirp_spectrogram_plot():
-    fs = 10e3
-    N = 1e5
+    fs = 10000
+    N = 100000
     amp = 2 * np.sqrt(2)
     noise_power = 0.001 * fs / 2
     time = np.arange(N) / fs
-    freq = np.linspace(1e3, 2e3, N)
-    x = amp * chirp(time, 1e3, 2.0, 6e3, method='quadratic') + \
+    freq = np.linspace(1000, 2000, N)
+    x = amp * chirp(time, 1000, 2.0, 6000, method='quadratic') + \
         np.random.normal(scale=np.sqrt(noise_power), size=time.shape)
 
     f, t, Sxx = spectrogram(x, fs)
@@ -40,7 +40,7 @@ def generate_chirp_spectrogram_plot():
     ax = plt.subplot(211)
     ax.pcolormesh(t, f, Sxx)
     ax.set_ylabel('Frequency [Hz]')
-    ax.set_xlabel('Time [sec]')
+    ax.set_xlabel('Time [sec]', labelpad=10)
 
     f, t, Sxx = spectrogram_lspopt(x, fs, c_parameter=20.0)
 
@@ -49,6 +49,7 @@ def generate_chirp_spectrogram_plot():
     ax.set_ylabel('Frequency [Hz]')
     ax.set_xlabel('Time [sec]')
 
+    plt.tight_layout()
     plt.show()
 
 
@@ -100,11 +101,12 @@ def generate_lsp_processes_figures():
         ax.set_ylim([-1.5, 1.5])
         ax.set_xlabel('t')
 
+    plt.tight_layout()
     plt.show()
 
 
 def main():
-    #generate_chirp_spectrogram_plot()
+    generate_chirp_spectrogram_plot()
     generate_lsp_processes_figures()
 
 if __name__ == "__main__":

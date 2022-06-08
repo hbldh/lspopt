@@ -66,13 +66,13 @@ import matplotlib.pyplot as plt
 
 from lspopt.lsp import spectrogram_lspopt
 
-fs = 10e3
-N = 1e5
+fs = 10000
+N = 100000
 amp = 2 * np.sqrt(2)
 noise_power = 0.001 * fs / 2
 time = np.arange(N) / fs
-freq = np.linspace(1e3, 2e3, N)
-x = amp * chirp(time, 1e3, 2.0, 6e3, method='quadratic') + \
+freq = np.linspace(1000, 2000, N)
+x = amp * chirp(time, 1000, 2.0, 6000, method='quadratic') + \
     np.random.normal(scale=np.sqrt(noise_power), size=time.shape)
 
 f, t, Sxx = spectrogram(x, fs)
@@ -89,10 +89,11 @@ ax.pcolormesh(t, f, Sxx)
 ax.set_ylabel('Frequency [Hz]')
 ax.set_xlabel('Time [sec]')
 
+plt.tight_layout()
 plt.show()
 ```
 
-![Spectrogram plot](https://hbldh.github.com/lspopt/images/plot.png)
+![Spectrogram plot](https://github.com/hbldh/lspopt/blob/master/plot.png)
 *Top: Using SciPy's spectrogram method. Bottom: Using LSPOpt's spectrogram solution.*
 
 ## References
