@@ -14,12 +14,6 @@ Created on 2015-11-13
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-
-import six
 import numpy as np
 
 from lspopt.data import C, WEIGHTS
@@ -73,7 +67,7 @@ def lspopt_ref(n, c_parameter=20.0):
                 h = np.vstack((h, (2 * t1 * h.T[:, i]) - 2 * i * h.T[:, i - 1]))
     H = h.T * np.outer(np.exp(-(t1 ** 2) / 2), np.ones((K,), "float"))
 
-    for i in six.moves.range(K):
+    for i in range(K):
         H[:, i] = H[:, i] / np.sqrt(H[:, i].T.dot(H[:, i]))  # Norm
 
     return H.T, wei

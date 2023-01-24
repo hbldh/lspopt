@@ -22,7 +22,6 @@ from __future__ import absolute_import
 import unittest
 
 import pytest
-import six
 import numpy as np
 from numpy.testing import assert_allclose
 from scipy.signal import chirp, spectrogram
@@ -31,7 +30,7 @@ from lspopt import lspopt, spectrogram_lspopt
 from .lspopt_ref import lspopt_ref
 
 
-@pytest.mark.parametrize("n", six.moves.range(64, 1024))
+@pytest.mark.parametrize("n", range(64, 1024))
 def test_different_n(n):
     """Test against reference implementation for different N."""
     h1, w1 = lspopt(n)

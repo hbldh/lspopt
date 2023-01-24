@@ -1,7 +1,6 @@
 # LSPOpt
 
 ![Build and Test](https://github.com/hbldh/lspopt/workflows/Build%20and%20Test/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/hbldh/lspopt/badge.svg?branch=master)](https://coveralls.io/github/hbldh/lspopt?branch=master)
 [![PyPI version](https://img.shields.io/pypi/v/lspopt.svg)](https://pypi.org/project/lspopt/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
@@ -32,10 +31,9 @@ If you prefer to use `conda`, see [instructions in this repo](https://github.com
 
 Test with `pytest`:
 
-    pytest tests/ 
+    pytest tests/
 
-Tests are run at every commit to GitHub and the results of this, as well as test 
-coverage, can be studied at [Azure Pipelines](https://dev.azure.com/hbldh/github/_build/latest?definitionId=7&branchName=master).
+See test badge at the top of this README for link to test coverage and reports.
 
 ## Usage
 

@@ -14,12 +14,6 @@ Created on 2015-11-13
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-
-import six
 import numpy as np
 from scipy.signal import spectrogram
 
@@ -60,7 +54,7 @@ def lspopt(n, c_parameter=20.0):
 
     t1 = np.arange(-(n / 2) + 1, (n / 2) + 0.1, step=1.0) / f_h(n, K)
     h = np.vstack((np.ones((n,)), 2 * t1))
-    for i in six.moves.range(1, K - 1):
+    for i in range(1, K - 1):
         h = np.vstack((h, (2 * t1 * h.T[:, i]) - 2 * i * h.T[:, i - 1]))
 
     H = h.T * np.outer(np.exp(-(t1 ** 2) / 2), np.ones((K,), "float"))

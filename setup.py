@@ -22,13 +22,12 @@ DESCRIPTION = "A Python implementation of a multitaper window method for " \
 URL = 'https://github.com/hbldh/lspopt'
 EMAIL = 'henrik.blidh@gmail.com'
 AUTHOR = 'Henrik Blidh'
-REQUIRES_PYTHON = '>=2.7.10'
+REQUIRES_PYTHON = '>=3.7'
 VERSION = None
 
 REQUIRED = [
-    'numpy',
-    'scipy',
-    'six'
+    'numpy>=1.21.6',
+    'scipy>=1.7.3',
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -114,12 +113,12 @@ setup(
         'Operating System :: POSIX',
         'Operating System :: Unix',
         'Operating System :: MacOS',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],

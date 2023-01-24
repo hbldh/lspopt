@@ -8,11 +8,6 @@ Created on 2015-11-13
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-
 from pkg_resources import resource_filename
 
 import numpy as np

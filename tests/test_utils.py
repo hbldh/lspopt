@@ -20,7 +20,6 @@ from __future__ import unicode_literals
 from __future__ import absolute_import
 
 import pytest
-import six
 import numpy as np
 from numpy.testing import assert_allclose
 
