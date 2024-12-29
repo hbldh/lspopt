@@ -8,17 +8,17 @@ Created on 2015-11-13
 
 """
 
-from pkg_resources import resource_filename
+from importlib import resources
 
 import numpy as np
 
 __all__ = ["C", "WEIGHTS", "f_h"]
 
 # An array of C parameter values for which weights have been pre-calculated.
-C = np.load(resource_filename("lspopt.data", "c.npy")).flatten()
+C = np.load(resources.files("lspopt.data").joinpath("c.npy")).flatten()
 # The pre-calculated Hermite polynomial coefficients
 # for the C parameter values above.
-WEIGHTS = np.load(resource_filename("lspopt.data", "weights.npy"))
+WEIGHTS = np.load(resources.files("lspopt.data").joinpath("weights.npy"))
 
 
 def f_h(n, k):
