@@ -41,7 +41,7 @@ To generate the taper windows only, use the `lspopt` method:
 
 ```python
 from lspopt import lspopt
-H, w = lspopt(N=256, c_parameter=20.0)
+H, w = lspopt(n=256, c_parameter=20.0)
 ```
     
 There is also a convenience method for using the [SciPy spectrogram method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.spectrogram.html#scipy.signal.spectrogram)
