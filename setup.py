@@ -4,10 +4,6 @@
 # Note: To use the 'upload' functionality of this file, you must:
 #   $ pip install twine
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import absolute_import
-
 import io
 import os
 import sys
