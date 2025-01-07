@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for `pip>=25`
 - Support for `numpy>=2`
 - Support for Windows and macOS
+- Converted `setup.py` to `setup.cfg`
 
 ### Removed
 
