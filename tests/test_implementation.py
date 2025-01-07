@@ -14,13 +14,6 @@ Created on 2015-11-14
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
-
-import unittest
-
 import pytest
 import numpy as np
 from numpy.testing import assert_allclose

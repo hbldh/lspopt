@@ -117,3 +117,6 @@ docs/_build/
 # PyBuilder
 target/
 
+# Environments
+.conda/
+.vscode/

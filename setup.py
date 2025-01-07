@@ -4,10 +4,6 @@
 # Note: To use the 'upload' functionality of this file, you must:
 #   $ pip install twine
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import absolute_import
-
 import io
 import os
 import sys
@@ -22,7 +18,7 @@ DESCRIPTION = "A Python implementation of a multitaper window method for " \
 URL = 'https://github.com/hbldh/lspopt'
 EMAIL = 'henrik.blidh@gmail.com'
 AUTHOR = 'Henrik Blidh'
-REQUIRES_PYTHON = '>=3.7'
+REQUIRES_PYTHON = '>=3.9'
 VERSION = None
 
 REQUIRED = [
@@ -114,11 +110,10 @@ setup(
         'Operating System :: Unix',
         'Operating System :: MacOS',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
